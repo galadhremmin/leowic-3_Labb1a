@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AldViewController : UIViewController
+@interface AldViewController : UIViewController<UITextFieldDelegate>
+
+@property (copy, nonatomic) NSString *userName;
 
 @end

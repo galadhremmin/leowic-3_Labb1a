@@ -9,6 +9,10 @@
 #import "AldViewController.h"
 
 @interface AldViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *greetingLabel;
+@property (weak, nonatomic) IBOutlet UITextField *textField;
+
+- (IBAction)changeGreeting:(id)sender;
 
 @end
 
@@ -26,4 +30,23 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)changeGreeting:(id)sender {
+    self.userName = self.textField.text;
+    
+    NSString *utilisedUserName = self.userName;
+    if ([utilisedUserName length] < 1) {
+        utilisedUserName = @"World";
+    }
+    
+    NSString *greetingMessage = [NSString stringWithFormat: @"Hello, %@!", utilisedUserName];
+    [self.greetingLabel setText: greetingMessage];
+}
+
+- (BOOL) textFieldShouldReturn: (UITextField *)field {
+    if (field == self.textField) {
+        [field resignFirstResponder];
+    }
+    
+    return YES;
+}
 @end
